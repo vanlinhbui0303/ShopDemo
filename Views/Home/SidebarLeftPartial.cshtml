@@ -1,0 +1,22 @@
+﻿@using ShopDemo.Models
+@model List<NhaCungCap>
+
+    <div class="col-lg-3">
+        <!--Category Menu Start-->
+        <div class="category-menu category-menu-2">
+            <div class="category-heading">
+                <h2 class="categories-toggle"><span>Hãng Nổi Bật</span></h2>
+            </div>
+            <div id="cate-toggle" class="category-menu-list">
+                <ul>
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <li><a href="@Url.Action("GiayTheoNhaCC","Giay",new {@mancc=item.MaNCC}) ">@item.TenNCC</a></li>
+                        }
+                    }
+                 </ul>
+            </div>
+        </div>
+        <!--Category Menu End-->
+    </div>

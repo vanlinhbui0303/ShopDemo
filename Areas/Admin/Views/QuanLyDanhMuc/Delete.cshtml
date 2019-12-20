@@ -1,0 +1,80 @@
+﻿@model ShopDemo.Models.DanhMuc
+
+@{
+    ViewBag.Title = "Admin-Xóa Danh Mục";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <strong>Xóa </strong> Danh Mục
+        </div>
+        @if (ViewBag.ThongBaoLoi != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.ThongBaoLoi
+            </div>
+        }
+        @if (ViewBag.Success != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @ViewBag.Success
+            </div>
+        }
+        <div class="card-body card-block">
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="text-input" class=" form-control-label">Tên Nhà Cung Cấp</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.MaDM, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.MaDM, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="text-input" class=" form-control-label">Tên Nhà Cung Cấp</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.TenDM, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.TenDM, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="card-footer">
+                    <script>
+                        function ConfirmMessageBox() {
+                            var result = confirm("BẠN CÓ MUỐN XÓA DANH MỤC NÀY");
+                            if (result) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
+                    </script>
+                    <input type="submit" value="Xóa" class="btn btn-danger" onclick="javascript:return ConfirmMessageBox();" /> |
+                    @Html.ActionLink("Back to List", "Index", "QuanLyDanhMuc")
+                </div>
+            }
+
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+﻿@using ShopDemo.Models
+@model List<GioHang>
+
+
+    <div class="row">
+        <div class="col-md-5 ml-auto">
+            <div class="cart-page-total">
+                <h2>Thông tin đơn hàng</h2>
+                <ul>
+                    <li>Tạm Tính (@ViewBag.TongSoLuong Sản Phẩm) <span>@String.Format("{0:0,0 VNĐ}", @ViewBag.TongTien)</span></li>
+                    <li>Tổng Cộng <span>@String.Format("{0:0,0 VNĐ}", @ViewBag.TongTien)</span></li>
+                </ul>
+                <a href="@Url.Action("DatHang","GioHang")">Xác Nhận Giỏ Hàng</a>
+            </div>
+        </div>
+    </div>

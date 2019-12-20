@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="13d8eaee53d04aeaa7b5ec13d9945a08" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="QLBanGiayModel.Admin" Width="1.5" PointX="6" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBanGiayModel.BaiDang" Width="1.5" PointX="0.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBanGiayModel.DanhGia" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBanGiayModel.DanhMuc" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBanGiayModel.HoTroTrucTuyen" Width="1.5" PointX="9.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBanGiayModel.NhaCungCap" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBanGiayModel.Quyen" Width="1.5" PointX="3.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBanGiayModel.Slider" Width="1.5" PointX="9.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBanGiayModel.ThanhVien" Width="1.5" PointX="6.625" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="QLBanGiayModel.FK_Admin_Quyen" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBanGiayModel.FK_DanhGia_ThanhVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBanGiayModel.FK_HoTroTrucTuyen_ThanhVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBanGiayModel.FK_ThanhVien_Quyen" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLBanGiayModel.sysdiagram" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="QLBanGiayModel.HoaDon" Width="1.5" PointX="12.625" PointY="5.5" />
+        <AssociationConnector Association="QLBanGiayModel.FK_HoaDon_ThanhVien" />
+        <EntityTypeShape EntityType="QLBanGiayModel.DonHang" Width="1.5" PointX="8.375" PointY="8.75" />
+        <AssociationConnector Association="QLBanGiayModel.FK_HoaDon_DonHang" />
+        <EntityTypeShape EntityType="QLBanGiayModel.ChiTietDonHang" Width="1.5" PointX="10.625" PointY="9.5" />
+        <AssociationConnector Association="QLBanGiayModel.FK_ChiTietDonHang_DonHang" />
+        <EntityTypeShape EntityType="QLBanGiayModel.HangHoa" Width="1.5" PointX="3" PointY="4.75" />
+        <AssociationConnector Association="QLBanGiayModel.FK_ChiTietDonHang_HangHoa" />
+        <AssociationConnector Association="QLBanGiayModel.FK_ChiTietDonHang_HangHoa1" />
+        <AssociationConnector Association="QLBanGiayModel.FK_DanhGia_HangHoa" />
+        <AssociationConnector Association="QLBanGiayModel.FK_HangHoa_DanhMuc" />
+        <AssociationConnector Association="QLBanGiayModel.FK_HangHoa_NhaCungCap" />
+        <AssociationConnector Association="QLBanGiayModel.FK_HoTroTrucTuyen_HangHoa" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

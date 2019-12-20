@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutUserAdmin.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="page-content--bge5">
+        <div class="container">
+            <div class="login-wrap">
+                <div class="login-content">
+                    <div class="login-logo">
+                        <a href="#">
+                            Trang Admin
+                        </a>
+                    </div>
+                    <div class="login-form">
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <label>Tên Đăng Nhập</label>
+                                <input class="au-input au-input--full" type="text" name="txtAdminTaiKhoan" placeholder="Tài Khoản">
+                            </div>
+                            <div class="form-group">
+                                <label>Mật Khẩu</label>
+                                <input class="au-input au-input--full" type="password" name="txtAdminMatKhau" placeholder="Mật Khẩu">
+                            </div>
+                            <div class="login-checkbox">
+                                <label>
+                                    <input type="checkbox" name="remember">Nhớ Tài Khoản
+                                </label>
+                                <label>
+                                    <a href="#">Quên Tài khoản, Mật khẩu?</a>
+                                </label>
+                            </div>
+                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Đăng Nhập</button>
+
+                        </form>
+                        <div class="register-link">
+                            <p class="label label-has-error" style="color:red" >
+                               @ViewBag.ThongBao
+                                @ViewBag.ThongBaoCanDangNhap
+                                
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

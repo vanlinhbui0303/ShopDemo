@@ -1,0 +1,136 @@
+﻿@using ShopDemo.Models
+@using PagedList.Mvc
+@using PagedList
+
+@model PagedList.PagedList<DonHang>
+
+@{
+    ViewBag.Title = "Admin-Quản Lý Đơn Hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row m-t-30">
+    <div class="col-md-12">
+
+        <h3 class="title-5 m-b-35">Quản Lý Đơn Hàng</h3>
+        <div class="table-data__tool">
+            <div class="table-data__tool-left">
+                <div class="rs-select2--light rs-select2--md">
+                    <select class="js-select2" name="property">
+                        <option selected="selected">Tùy Chọn</option>
+                        <option value="">Option 1</option>
+                        <option value="">Option 2</option>
+                    </select>
+                    <div class="dropDownSelect2"></div>
+                </div>
+                <div class="rs-select2--light rs-select2--sm">
+                    <select class="js-select2" name="time">
+                        <option selected="selected">Sắp Xếp</option>
+                        <option value="">3 Days</option>
+                        <option value="">1 Week</option>
+                    </select>
+                    <div class="dropDownSelect2"></div>
+                </div>
+                <button class="au-btn-filter">
+                    <i class="zmdi zmdi-filter-list"></i>Lọc
+                </button>
+            </div>
+            @*<div class="table-data__tool-right">
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small" onclick="location.href='@Url.Action("ThemMoi", "QuanLyNhaCungCap")';return false;">
+                    <i class="zmdi zmdi-plus"></i>Thêm Mới
+                </button>
+                <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                    <select class="js-select2" name="type">
+                        <option selected="selected">Export</option>
+                        <option value="">Option 1</option>
+                        <option value="">Option 2</option>
+                    </select>
+                    <div class="dropDownSelect2"></div>
+                </div>
+            </div>*@
+        </div>
+
+
+        <!-- DATA TABLE-->
+        <div class="table-responsive m-b-40">
+            <table class="table table-borderless table-data3">
+                <thead>
+                    <tr>
+                        <th>Mà Đơn Hàng</th>
+                        <th>Ngày Đặt</th>
+                        <th>Họ Tên Người đặt</th>
+                        <th>Địa Chỉ Giao Hàng</th>
+                        <th>Số Điện Thoại</th>
+                        <th>Tình Trạng Đơn Hàng</th>
+                        <th>Tổng Tiền</th>
+                        <th>Tùy Chọn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var item in Model)
+                        {
+                                        <tr>
+                                            <td>@item.MaDH</td>
+                                            <td>@item.NgayDat</td>
+                                            <td>@item.HoTenNhan</td>
+                                            <td>@item.DiaChiNhan</td>
+                                            <td>@item.SoDienThoaiNhan</td>
+                                            <td>
+                                                @{
+                                                    if (item.TrangThai != 1)
+                                                    {
+                                                        <span class="role member">Xác Nhận</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="role admin"> Chưa Xác Nhận</span>
+                                                    }
+                                                }
+                                            </td>
+                                            <td> @String.Format("{0:0,0 VNĐ}", @item.TongTienDonHang)</td>
+                                            <td>
+                                                <div class="table-data-feature">
+                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Xem Chi tiết Đơn hàng" onclick="location.href='@Url.Action("XemChiTiet", "QuanLyDonHang",new{@madh=item.MaDH})';return false;">
+                                                        <i class="zmdi zmdi-mail-send"></i>
+                                                    </button>
+                                                    @*<button class="item" data-toggle="tooltip" data-placement="top" title="Chỉnh Sửa" onclick="location.href='@Url.Action("Update", "QuanLyDonHang",new{@madh=item.MaDH})';return false;">
+                                                        <i class="zmdi zmdi-edit"></i>
+                                                    </button>*@
+                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Xóa" onclick="location.href='@Url.Action("Delete", "QuanLyDonHang",new{@madh=item.MaDH})';return false;">
+                                                        <i class="zmdi zmdi-delete"></i>
+                                                    </button>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                        }
+                    }
+
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                        <p class="page-link">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount</p>
+                    </li>
+                    <li class="page-item">
+                        @Html.PagedListPager(Model, page => Url.Action("Index", "QuanLyDonHang", new { page = page }), new PagedListRenderOptions() { LiElementClasses = new List<string> { "page-item", "page-link" } })
+
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+        <!-- END DATA TABLE-->
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

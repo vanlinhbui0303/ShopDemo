@@ -1,0 +1,51 @@
+﻿@using ShopDemo.Models
+@model List<GioHang>
+
+    <div class="col-lg-6 col-12">
+        <div class="your-order">
+            <h3>Chi Tiết Đơn Hàng</h3>
+            <div class="your-order-table table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="cart-product-name">Sản Phẩm</th>
+                            <th class="cart-product-total">Giá</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var item in Model)
+                            {
+                                <tr class="cart_item">
+                                    <td class="cart-product-name">@item.sTenHH<strong class="product-quantity"> × @item.iSoLuong</strong></td>
+                                    <td class="cart-product-total"><span class="amount">@String.Format("{0:0,0 VNĐ}", (@item.dDonGia*item.iSoLuong))</span></td>
+                                </tr>
+                            }
+                        }
+
+                       
+                    </tbody>
+                    <tfoot>
+                        <tr class="cart-subtotal">
+                            <th>Tạm Tính</th>
+                            <td><span class="amount">@String.Format("{0:0,0 VNĐ}", @ViewBag.TongTien)</span></td>
+                        </tr>
+                        <tr class="order-total">
+                            <th>Thành Tiền</th>
+                            <td><strong><span class="amount">@String.Format("{0:0,0 VNĐ}", @ViewBag.TongTien)</span></strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="payment-method">
+                <div class="payment-accordion">
+                    
+
+
+                    <div class="order-button-payment">
+                        <input value="Đặt Hàng" type="submit">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

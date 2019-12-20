@@ -1,0 +1,84 @@
+﻿@using ShopDemo.Models
+@model List<ChiTietDonHang>
+@{
+    ViewBag.Title = "Admin Xóa Đơn Hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <strong>Xóa </strong> Đơn Hàng
+        </div>
+        @if (ViewBag.ThongBaoLoi != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.ThongBaoLoi
+            </div>
+        }
+        @if (ViewBag.Success != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @ViewBag.Success
+            </div>
+        }
+        <div class="table-responsive m-b-40">
+            <table class="table table-borderless table-data3">
+                <thead>
+                    <tr>
+                        <th>Mã Đơn Hàng</th>
+                        <th>Mã Hàng Hóa</th>
+                        <th>Tên Hàng</th>
+                        <th>Số Lượng</th>
+                        <th>Size</th>
+                        <th>Tổng Tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.MaDH</td>
+                                <td>@item.MaHH</td>
+                                <td>@item.MaHH</td>
+                                <td>@item.SoLuong</td>
+                                <td>@item.Size</td>
+                                <td> @String.Format("{0:0,0 VNĐ}", @item.TongTien)</td>
+
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+        @using (Html.BeginForm("XacNhanXoa","QuanLyDonHang",new {@mactdh=Model[0].MaDH}))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="card-footer">
+                <script>
+                    function ConfirmMessageBox() {
+                        var result = confirm("BẠN CÓ MUỐN XÓA ĐƠN HÀNG");
+                        if (result) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                </script>
+                <input type="submit" value="Xóa" class="btn btn-danger" onclick="javascript:return ConfirmMessageBox();" /> 
+                @Html.ActionLink("Quay Lại", "Index", "QuanLyDonHang")
+            </div>
+        }
+
+
+    </div>
+
+
+ </div>
+

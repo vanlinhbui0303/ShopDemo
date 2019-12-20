@@ -1,0 +1,51 @@
+﻿@using ShopDemo.Models
+@model List<GioHang>
+
+<!-- Begin Header Mini Cart Area -->
+<li class="hm-minicart">
+    <div class="hm-minicart-trigger">
+        <span class="item-icon"></span>
+        <span class="item-text">
+            @String.Format("{0:0,0 VNĐ}", @ViewBag.TongTien) 
+            <span class="cart-item-count"> @ViewBag.TongSoLuong</span>
+        </span>
+    </div>
+    <span></span>
+    <div class="minicart">
+        <ul class="minicart-product-list">
+           @{ 
+                foreach (var item in Model)
+                {
+
+                       <li>
+                           <a href="@Url.Action("XemChiTiet", "Giay", new { @mahh = item.sMaHH })" class="minicart-product-image">
+                               <img src="@Url.Content("~/images/Item/" + item.sAnhBia)" alt="cart products">
+                           </a>
+                           <div class="minicart-product-details">
+                               <h6><a href="@Url.Action("XemChiTiet", "Giay", new { @mahh = item.sMaHH})">@item.sTenHH - @item.iSize</a></h6>
+                               <span>@String.Format("{0:0,0 VNĐ}", @item.dDonGia) x @item.iSoLuong</span>
+                           </div>
+                           @using(Html.BeginForm("XoaGioHang2", "GioHang", new { @mahh = item.sMaHH,@size=item.iSize, @strUrl = Request.Url.ToString()}))
+                           {
+                           <button class="close" type="submit">
+                               <i class="fa fa-close"></i>
+                           </button>
+                           }
+                           
+                       </li>
+                    }
+                }
+            
+        </ul>
+        <p class="minicart-total">Tổng Tiền: <span style="color:#e80f0f"> @String.Format("{0:0,0 VNĐ}", @ViewBag.TongTien) </span></p>
+        <div class="minicart-button">
+            <a href="@Url.Action("GioHang","GioHang")"class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                <span>Xem Chi Tiết Giỏ Hàng</span>
+            </a>
+            <a href="@Url.Action("DatHang","GioHang")" class="li-button li-button-fullwidth li-button-sm">
+                <span>Thanh Toán</span>
+            </a>
+        </div>
+    </div>
+</li>
+<!-- Header Mini Cart Area End Here -->

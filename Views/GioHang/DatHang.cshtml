@@ -1,0 +1,98 @@
+﻿@model ShopDemo.Models.DonHang
+
+@{
+    ViewBag.Title = "Xác Nhận Đơn Hàng";
+    Layout = "~/Views/Shared/_LayoutGiay.cshtml";
+}
+
+@if (ViewBag.ThongBao != null)
+{
+    <!--Checkout Area Strat-->
+    <div class="checkout-area pt-60 pb-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="coupon-accordion">
+
+                        <!--Accordion Start-->
+                        <h2 style="color:"#2ecc71">@ViewBag.ThongBao <span id="showcoupon">Trở về trang Chủ Trong 5s</span></h2>
+                        <script type="text/javascript">window.setTimeout(function(){
+                                    window.location.href='@Url.Action("Index", "Home")';
+                                }, 4000);</script>
+                        <!--Accordion End-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--Checkout Area End-->
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <!--Checkout Area Strat-->
+    <div class="checkout-area pt-60 pb-30">
+        <div class="container">
+            <div class="row">
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-12">
+
+                    <div class="checkbox-form">
+                        <h3>Thông Tin Đặt Hàng</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Họ Tên <span class="required">*</span></label>
+
+                                    @Html.EditorFor(model => model.HoTenNhan, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.HoTen, } })
+                                    @Html.ValidationMessageFor(model => model.HoTenNhan, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Địa Chỉ Nhận Hàng</label>
+
+                                    @Html.EditorFor(model => model.DiaChiNhan, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.DiaChi, } })
+                                    @Html.ValidationMessageFor(model => model.DiaChiNhan, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Số Điện Thoại <span class="required">*</span></label>
+
+                                    @Html.EditorFor(model => model.SoDienThoaiNhan, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.SoDienThoai, } })
+                                    @Html.ValidationMessageFor(model => model.SoDienThoaiNhan, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                @Html.Action("GioHangPayPartial", "GioHang")
+            </div>
+        </div>
+    </div>
+    <!--Checkout Area End-->
+
+
+}
+
+
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

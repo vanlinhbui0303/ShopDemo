@@ -1,0 +1,138 @@
+﻿@model ShopDemo.Models.HangHoa
+
+@{
+    ViewBag.Title = "Admin-Xóa Sản Phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <strong>Xóa Hàng</strong>
+        </div>
+        <div class="card-body card-block">
+            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Mã Hàng </label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@Model.MaHH</p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Tên Hàng </label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@Model.TenHH</p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Giá Nhập </label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@Model.GiaNhap</p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Giá Bán </label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@Model.GiaBan</p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Giá Sale </label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@Model.GiaKhuyenMai</p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Số Lượng</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@Model.SoLuong</p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Hãng cung Cấp</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@Model.NhaCungCap.TenNCC</p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Danh Mục</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@Model.DanhMuc.TenDM</p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Mô Tả</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p class="form-control-static">@Model.ThongTin</p>
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="card-footer">
+                <script>
+                    function ConfirmMessageBox() {
+                        var result = confirm("BẠN CÓ MUỐN XÓA HÀNG NÀY");
+                        if (result) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                </script>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Xóa" class="btn btn-danger" onclick="javascript:return ConfirmMessageBox();" />
+
+                    </div>
+                }
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div>
+    @Html.ActionLink("Trở Lại", "Index", "QuanLySanPham")
+</div>
+
+
+
+
+
+
+
+

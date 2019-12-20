@@ -1,0 +1,141 @@
+﻿@model ShopDemo.Models.HangHoa
+
+@{
+    ViewBag.Title = "Admin-Thêm Mới Sản Phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <strong>Thêm Mới </strong> Sản Phẩm
+        </div>
+        @if (ViewBag.ThongBaoLoi != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.ThongBaoLoi
+            </div>
+        }
+        @if (ViewBag.Success != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @ViewBag.Success
+            </div>
+        }
+    <div class="card-body card-block">
+        @using (Html.BeginForm("ThemMoi","QuanLySanPham",FormMethod.Post,new { @enctype = "multipart/form-data"}))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="text-input" class=" form-control-label">Mã Hàng Hóa</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.MaHH, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MaHH, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="text-input" class=" form-control-label">Tên Hàng Hóa</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.TenHH, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TenHH, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="text-input" class=" form-control-label">Giá Nhập</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.GiaNhap, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.GiaNhap, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="text-input" class=" form-control-label">Giá Bán</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="text-input" class=" form-control-label">Giá Sale</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.GiaKhuyenMai, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.GiaKhuyenMai, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col col-md-3">
+
+                    <label for="text-input" class=" form-control-label">Số Lượng</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.SoLuong, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="select" class=" form-control-label">Nhà Cung Cấp</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.DropDownList("MaNCC", null, String.Empty, new { @class = "form-control" })
+
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="select" class=" form-control-label">Danh Mục Sản Phẩm</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.DropDownList("MaDM", null, String.Empty, new { @class = "form-control" })
+
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="file-input" class=" form-control-label">Ảnh Bìa</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <input type="file" id="file-input" name="fileUpload" class="form-control-file">
+                    <small class="help-block form-text">  @ViewBag.ThongBaoAnhTonTai </small>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="textarea-input" class=" form-control-label">Thông Tin Mô Tả</label>
+                </div>
+                <div class="col-12 col-md-9">
+
+                    @Html.TextAreaFor(model => model.ThongTin, 9, 9, new { @class = "form-control", @id = "textarea-input" })
+                    @Html.ValidationMessageFor(model => model.ThongTin, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fa fa-dot-circle-o"></i> Thêm Mới
+                </button>
+                <button type="reset" class="btn btn-danger btn-sm">
+                    <i class="fa fa-ban"></i> Reset
+                </button>
+            </div>
+        }
+    </div>
+
+
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Trở Lại", "Index", "QuanLySanPham")
+</div>

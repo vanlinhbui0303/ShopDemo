@@ -1,0 +1,69 @@
+﻿@model ShopDemo.Models.DanhMuc
+
+@{
+    ViewBag.Title = "Admin-Chỉnh sửa Danh Mục";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <strong>Chỉnh Sửa </strong> Danh Mục
+        </div>
+        @if (ViewBag.ThongBaoLoi != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.ThongBaoLoi
+            </div>
+        }
+        @if (ViewBag.Success != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @ViewBag.Success
+            </div>
+        }
+        <div class="card-body card-block">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label for="text-input" class=" form-control-label">Mã Danh Mục</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        @Html.EditorFor(model => model.MaDM, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.MaDM, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label for="text-input" class=" form-control-label">Tên Danh Mục</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        @Html.EditorFor(model => model.TenDM, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TenDM, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="fa fa-dot-circle-o"></i> Chỉnh Sửa
+                    </button>
+                    <button type="reset" class="btn btn-danger btn-sm">
+                        <i class="fa fa-ban"></i> Reset
+                    </button>
+                </div>
+            }
+        </div>
+
+
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index","QuanLyDanhMuc")
+</div>
+
+
+

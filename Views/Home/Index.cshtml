@@ -1,0 +1,278 @@
+﻿
+@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@using ShopDemo.Models
+@model List<HangHoa>
+
+
+<!-- Begin Li's New Product Area -->
+<section class="product-area li-laptop-product pt-60 pb-45">
+    <div class="container">
+        <div class="row">
+            <!-- Begin Li's Section Area -->
+            <div class="col-lg-12">
+                <div class="li-section-title">
+                    <h2>
+                        <span>Sản Phẩm Mới</span>
+                    </h2>
+
+                </div>
+                <div class="row">
+                    <div class="product-active owl-carousel">
+                        @{
+                                       
+                                        foreach (var item in Model.OrderByDescending(n=>n.NgayNhap))
+                                        {
+                                <div class="col-lg-12">
+                                    <!-- single-product-wrap start -->
+
+                                    <div class="single-product-wrap">
+                                        <div class="product-image">
+                                            <a href="@Url.Action("XemChiTiet","Giay", new { @mahh=item.MaHH})">
+                                                <img src="@Url.Content("~/images/Item/" + item.AnhBia)" alt="Li's Product Image">
+                                            </a>
+                                            <span class="sticker">Mới</span>
+                                        </div>
+                                        <div class="product_desc">
+                                            <div class="product_desc_info">
+                                                <div class="product-review">
+                                                    <h5 class="manufacturer">
+                                                        <a href="shop-left-sidebar.html">@item.NhaCungCap.TenNCC</a>
+                                                    </h5>
+                                                    <div class="rating-box">
+                                                        <ul class="rating">
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <h4><a class="product_name" href="@Url.Action("XemChiTiet","Giay", new { @mahh=item.MaHH})">@item.TenHH</a></h4>
+                                                <div class="price-box">
+                                                    @{ if (item.GiaKhuyenMai == null)
+                                                        {
+                                                            <span class="new-price">@String.Format("{0:0,0 VNĐ}", item.GiaBan)</span>
+                                                        }
+                                                        else
+                                                        { <span class="new-price new-price-2">@String.Format("{0:0,0 VNĐ}",item.GiaKhuyenMai)</span>
+                                                        <span class="old-price"> @String.Format("{0:0,0}",item.GiaBan) </span> }
+                                                    }
+                                                </div>
+                                            </div>
+                                            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @mahh =item.MaHH, @strUrl = Request.Url.ToString() }, FormMethod.Post, new { @class = "add-actions",@Name="myform"}))
+                                            {
+             
+                                                <ul class="add-actions-link">
+                                                    
+                                                    <li class="add-cart active"><a  href="@Url.Action("XemChiTiet", "Giay", new { @mahh =item.MaHH })">Mua Hàng</a></li>
+                                                    <li><a class="links-details" href="@Url.Action("XemChiTiet", "Giay", new { @mahh = item.MaHH })"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a class="quick-view" href="@Url.Action("XemChiTiet", "Giay", new { @mahh = item.MaHH })"><i class="fa fa-eye"></i></a></li>
+                                                </ul>
+                                           
+                                                }
+                                        </div>
+                                    </div>
+                                    <!-- single-product-wrap end -->
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Section Area End Here -->
+        </div>
+    </div>
+</section>
+
+<!-- Li's New Product Area End Here -->
+<!-- Begin Li's TV & Audio Product Area -->
+<section class="product-area li-laptop-product li-tv-audio-product pb-45">
+    <div class="container">
+        <div class="row">
+            <!-- Begin Li's Section Area -->
+            <div class="col-lg-12">
+                <div class="li-section-title">
+                    <h2>
+                        <span>SALE</span>
+                    </h2>
+
+                </div>
+                <div class="row">
+                    <div class="product-active owl-carousel">
+
+                        @{
+                            foreach (var item in Model)
+                            {
+                                if (item.GiaKhuyenMai != null)
+                                {
+                                    <div class="col-lg-12">
+                                        <!-- single-product-wrap start -->
+                                        <div class="single-product-wrap">
+                                            <div class="product-image">
+                                                <a href="@Url.Action("XemChiTiet","Giay", new { @mahh=item.MaHH})">
+                                                    <img src="@Url.Content("~/images/Item/" + item.AnhBia)" alt="Image">
+                                                </a>
+                                                <span class="sticker">Sale</span>
+                                            </div>
+                                            <div class="product_desc">
+                                                <div class="product_desc_info">
+                                                    <div class="product-review">
+                                                        <h5 class="manufacturer">
+                                                            <a href="@Url.Action("XemChiTiet","Giay", new { @mahh=item.MaHH})">@item.NhaCungCap.TenNCC</a>
+                                                        </h5>
+                                                        <div class="rating-box">
+                                                            <ul class="rating">
+                                                                <li><i class="fa fa-star-o"></i></li>
+                                                                <li><i class="fa fa-star-o"></i></li>
+                                                                <li><i class="fa fa-star-o"></i></li>
+                                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <h4><a class="product_name" href="@Url.Action("XemChiTiet","Giay", new { @mahh=item.MaHH})">@item.TenHH</a></h4>
+                                                    <div class="price-box">
+                                                        <span class="new-price new-price-2">@String.Format("{0:0,0 VNĐ}", item.GiaKhuyenMai)</span>
+                                                        <span class="old-price">@String.Format("{0:0,0 }", item.GiaBan)</span>
+
+                                                    </div>
+                                                </div>
+                                                @using (Html.BeginForm("ThemGioHang", "GioHang", new { @mahh = item.MaHH, @strUrl = Request.Url.ToString() }, FormMethod.Post, new { @class = "add-actions", @Name = "myform" }))
+                                                {
+
+                                                    <ul class="add-actions-link">
+
+                                                        <li class="add-cart active"><a  href="@Url.Action("XemChiTiet", "Giay", new { @mahh = item.MaHH })">Mua hàng</a></li>
+                                                        <li><a class="links-details" href="@Url.Action("XemChiTiet", "Giay", new { @mahh = item.MaHH })"><i class="fa fa-heart-o"></i></a></li>
+                                                        <li><a class="quick-view" href="@Url.Action("XemChiTiet", "Giay", new { @mahh = item.MaHH })"><i class="fa fa-eye"></i></a></li>
+                                                    </ul>
+
+                                                }
+                                            </div>
+                                        </div>
+                                        <!-- single-product-wrap end -->
+                                    </div>
+
+                                }
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Section Area End Here -->
+        </div>
+    </div>
+</section>
+<!-- Li's TV & Audio Product Area End Here -->
+<!-- Begin Li's Trending Product Area -->
+<section class="product-area li-trending-product pt-60 pb-45 pt-xs-50">
+    <div class="container">
+        <div class="row">
+            <!-- Begin Li's Tab Menu Area -->
+            <div class="col-lg-12">
+                <div class="li-product-tab li-trending-product-tab">
+                    <h2>
+                        <span>Sản Phẩm Nổi bật</span>
+                    </h2>
+                </div>
+                <!-- Begin Li's Tab Menu Content Area -->
+                <div class="tab-content li-tab-content li-trending-product-content">
+                    <div id="home1" class="tab-pane show fade in active">
+                        <div class="row">
+                            <div class="product-active owl-carousel">
+
+                                @{
+                                    foreach (var item in Model)
+                                    {
+                                        <div class="col-lg-12">
+                                            <!-- single-product-wrap start -->
+                                            <div class="single-product-wrap">
+                                                <div class="product-image">
+                                                    <a href="@Url.Action("XemChiTiet","Giay", new { @mahh=item.MaHH})">
+                                                        <img src="@Url.Content("~/images/Item/" + item.AnhBia)" alt=" Image">
+                                                    </a>
+
+                                                    @{ if (@item.GiaKhuyenMai == null)
+                                                        {
+                                                            <span class="sticker">Mới</span>
+                                                        }
+                                                        else
+                                                        { <span class="sticker">Sale</span>
+                                                        }
+                                                    }
+
+                                                </div>
+                                                <div class="product_desc">
+                                                    <div class="product_desc_info">
+                                                        <div class="product-review">
+                                                            <h5 class="manufacturer">
+                                                                <a href="@Url.Action("XemChiTiet","Giay", new { @mahh=item.MaHH})">@item.NhaCungCap.TenNCC</a>
+                                                            </h5>
+                                                            <div class="rating-box">
+                                                                <ul class="rating">
+                                                                    <li><i class="fa fa-star-o"></i></li>
+                                                                    <li><i class="fa fa-star-o"></i></li>
+                                                                    <li><i class="fa fa-star-o"></i></li>
+                                                                    <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                    <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <h4><a class="product_name" href="@Url.Action("XemChiTiet","Giay", new { @mahh=item.MaHH})">@item.TenHH</a></h4>
+                                                        <div class="price-box">
+                                                            @{ if (@item.GiaKhuyenMai == null)
+                                                                {
+                                                                    <span class="new-price">@String.Format("{0:0,0 VNĐ}", item.GiaBan)</span>
+                                                                }
+                                                                else
+                                                                { <span class="new-price new-price-2">@String.Format("{0:0,0 VNĐ}", item.GiaKhuyenMai)</span>
+                                                                <span class="old-price">@String.Format("{0:0,0 }", item.GiaBan)</span> }
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    @using (Html.BeginForm("ThemGioHang", "GioHang", new { @mahh = item.MaHH, @strUrl = Request.Url.ToString() }, FormMethod.Post, new { @class = "add-actions", @Name = "myform" }))
+                                                    {
+
+                                                        <ul class="add-actions-link">
+
+                                                            <li class="add-cart active"><a href="@Url.Action("XemChiTiet", "Giay", new { @mahh = item.MaHH })">Mua Hàng</a></li>
+                                                            <li><a class="links-details" href="@Url.Action("XemChiTiet", "Giay", new { @mahh = item.MaHH })"><i class="fa fa-heart-o"></i></a></li>
+                                                            <li><a class="quick-view" href="@Url.Action("XemChiTiet", "Giay", new { @mahh = item.MaHH })"><i class="fa fa-eye"></i></a></li>
+                                                        </ul>
+
+                                                    }
+                                                </div>
+                                            </div>
+                                            <!-- single-product-wrap end -->
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tab Menu Content Area End Here -->
+            </div>
+            <!-- Tab Menu Area End Here -->
+        </div>
+    </div>
+</section>
+<!-- Li's Trending Product Area End Here -->
+<!-- Begin Li's Breadcrumb Area -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content" style="text-align:right; color:aqua;">
+            <ul>
+                <li ><a href="@Url.Action("SanPham","Giay")">Xem Tất cả Sản Phẩm</a></li>
+               
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Li's Breadcrumb Area End Here -->
+

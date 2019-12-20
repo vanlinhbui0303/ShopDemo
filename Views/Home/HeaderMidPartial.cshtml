@@ -1,0 +1,57 @@
+﻿@using ShopDemo.Models
+@model List<NhaCungCap>
+
+    <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
+        <div class="container">
+            <div class="row">
+                <!-- Begin Header Logo Area -->
+                <div class="col-lg-3">
+                    <div class="logo pb-sm-30 pb-xs-30">
+                        <a href="index.html">
+                            <img src="~/images/logo/logotrangchu.png" alt="logo" style="width:150px; height:50px;">
+                            
+                        </a>
+                    </div>
+                </div>
+                <!-- Header Logo Area End Here -->
+                <!-- Begin Header Middle Right Area -->
+                <div class="col-lg-9">
+                    <!-- Begin Header Middle Searchbox Area -->
+                  
+                        @using (Html.BeginForm("KetQuaTimKiem","TimKiem",FormMethod.Post,new { @class="hm-searchbox"}))
+                        {
+                        <select class="nice-select select-search-category" id="txtKieuTimKiem" name="txtKieuTimKiem">
+                           
+                            <option value="tenSanPham">Tên Sản Phẩm</option>
+                            <option value="tenHang">Tên Hãng</option>
+                            @*@{
+                                foreach (var item in Model)
+                                {
+                                    <option value="@item.MaNCC">@item.TenNCC</option>
+                                }
+                            }*@
+
+                        </select>
+                        <input type="text" placeholder="Tìm Kiếm ..." id="txtTimKiem" name="txtTimKiem">
+                        <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
+                                }
+                    
+                    <!-- Header Middle Searchbox Area End Here -->
+                    <!-- Begin Header Middle Right Area -->
+                    <div class="header-middle-right">
+                        <ul class="hm-menu">
+                            <!-- Begin Header Middle Wishlist Area -->
+                           
+                            <!-- Header Middle Wishlist Area End Here -->
+                            <!-- Begin Header Mini Cart Area -->
+                          
+                            @Html.Action("GioHangPartial","GioHang")
+                            <!-- Header Mini Cart Area End Here -->
+                        </ul>
+                    </div>
+                    <!-- Header Middle Right Area End Here -->
+                </div>
+                <!-- Header Middle Right Area End Here -->
+            </div>
+        </div>
+    </div>

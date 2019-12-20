@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link href="~/Content/log/fonts/material-icon/css/material-design-iconic-font.min.css" rel="stylesheet" />
+    <!-- Main css -->
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link href="~/Content/log/css/style.css" rel="stylesheet" />
+ 
+</head>
+<body>
+
+    <div class="main" style="padding:20px">
+
+        <!-- Sign up form -->
+
+
+
+        @RenderBody()
+    </div>
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/log/vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="~/Scripts/log/js/main.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

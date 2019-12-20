@@ -1,0 +1,84 @@
+﻿@using ShopDemo.Models
+@model ThanhVien
+
+@{
+    if (Session["ThanhVien"] == null || Session["ThanhVien"].ToString() == "")
+    {
+
+
+
+
+        <!-- Begin Header Top Area -->
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <!-- Begin Header Top Left Area -->
+                    <div class="col-lg-3 col-md-4">
+
+                    </div>
+                    <!-- Header Top Left Area End Here -->
+                    <!-- Begin Header Top Right Area -->
+                    <div class="col-lg-9 col-md-8">
+                        <div class="header-top-right">
+                            <ul class="ht-menu">
+                                <!-- Begin Setting Area -->
+                                <!-- Setting Area End Here -->
+                                <!-- Begin Currency Area -->
+                                <li>
+                                    <span class="language-selector-wrapper"><a href="@Url.Action("DangKy", "User")">Đăng Ký</a></span>
+                                </li>
+                                <!-- Currency Area End Here -->
+                                <!-- Begin Language Area -->
+                                <li>
+                                    <span class="language-selector-wrapper"><a href="@Url.Action("DangNhap", "User")">Đăng Nhập</a></span>
+                                </li>
+                                <!-- Language Area End Here -->
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Header Top Right Area End Here -->
+                </div>
+            </div>
+        </div>
+        <!-- Header Top Area End Here -->
+    }
+    else
+    {
+        <!-- Begin Header Top Area -->
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <!-- Begin Header Top Left Area -->
+                    <div class="col-lg-3 col-md-4">
+                        
+                    </div>
+                    <!-- Header Top Left Area End Here -->
+                    <!-- Begin Header Top Right Area -->
+                    <div class="col-lg-9 col-md-8">
+                        <div class="header-top-right">
+                            <ul class="ht-menu">
+                                <!-- Begin Setting Area -->
+                                <li>
+                                    <span class="currency-selector-wrapper">Tài Khoản :</span>
+                                    <div class="ht-setting-trigger"><span>@Model.HoTen</span></div>
+                                    <div class="setting ht-setting">
+                                        <ul class="ht-setting-list">
+                                            <li><a href="login-register.html">Cài Đặt</a></li>
+
+                                            <li><a href="@Url.Action("DangXuat","User",new {@strUrl = Request.Url.ToString()})">Đăng Xuất</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <!-- Setting Area End Here -->
+                               
+                               
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Header Top Right Area End Here -->
+                </div>
+            </div>
+        </div>
+
+    }
+}
