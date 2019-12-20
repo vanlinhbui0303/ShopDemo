@@ -397,7 +397,6 @@
     <Content Include="Content\log\fonts\poppins\roboto-condensed-v16-latin-italic.svg" />
     <Content Include="Content\log\fonts\poppins\roboto-condensed-v16-latin-regular.svg" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont3e6e.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -408,6 +407,7 @@
     <Content Include="images\banner\8.jpg" />
     <Content Include="images\banner\9.jpg" />
     <Content Include="images\banner\banner3.jpg" />
+    <Content Include="images\favicon.png" />
     <Content Include="images\footer\1.png" />
     <Content Include="images\footer\2.png" />
     <Content Include="images\footer\3.png" />
@@ -426,7 +426,9 @@
     <Content Include="images\Item\012.jpg" />
     <Content Include="images\Item\013.jpg" />
     <Content Include="images\Item\014.jpg" />
+    <Content Include="images\logo\linkedin_banner_image_1.png" />
     <Content Include="images\logo\logotrangchu.png" />
+    <Content Include="images\logo\pinterest_board_photo.png" />
     <Content Include="images\log\signin-image.jpg" />
     <Content Include="images\log\signup-image.jpg" />
     <Content Include="Models\QLBanGiayModel.Context.tt">
