@@ -27,10 +27,6 @@ namespace ShopDemo.Controllers
                 ViewBag.HangHoa = "Không tìm thấy sản phẩm";
                 return null;
             }
-            if (TempData["ThongBao"]!=null)
-            {
-                ViewBag.ThongBao= TempData["ThongBao"].ToString();
-            }
             return View(giay);
         }
         public ViewResult SanPham(int? page) 
