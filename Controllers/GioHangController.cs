@@ -83,8 +83,10 @@ namespace ShopDemo.Controllers
                 return Redirect(strUrl);
 
             }
+
             else
             {
+                //kiểm tra hàng hóa có đủ số lượng
                 if (sanpham.iSoLuong + int.Parse(f["txtSoLuong"].ToString()) > hh.SoLuong)
                 {
                     TempData["ThongBao"] = "Sản Phẩm không còn đủ số lượng để đặt hàng. Xin Lỗi vì sự bất tiện này";

@@ -27,6 +27,7 @@ namespace ShopDemo.Controllers
                 ViewBag.HangHoa = "Không tìm thấy sản phẩm";
                 return null;
             }
+            //kiểm tra thông báo
             if (TempData["ThongBao"] != null)
             {
                 ViewBag.ThongBao = TempData["ThongBao"].ToString();
