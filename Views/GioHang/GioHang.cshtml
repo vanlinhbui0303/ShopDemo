@@ -27,6 +27,11 @@
                 <div class="col-12">
 
                     <div class="table-content table-responsive">
+                        @if (ViewBag.ThongBao != null)
+                        {
+                            <div class="alert alert-danger" role="alert">@ViewBag.ThongBao</div>
+
+                        }
                         <table class="table">
                             <thead>
                                 <tr>

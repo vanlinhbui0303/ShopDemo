@@ -61,7 +61,7 @@
                         <div class="product-info">
                             <h2>@Model.TenHH</h2>
                             <span class="product-details-ref">Hãng: @Model.NhaCungCap.TenNCC</span>
-                            
+
                             <div class="rating-box pt-20">
                                 <ul class="rating rating-with-review-item">
                                     <li><i class="fa fa-star-o"></i></li>
@@ -73,6 +73,7 @@
                                     <li class="review-item"><a href="#">Đánh giá</a></li>
                                 </ul>
                             </div>
+                            <span class="product-details-ref">Số Lượng Còn: @Model.SoLuong</span>
                             <div class="price-box pt-20">
 
                                 @{ if (Model.GiaKhuyenMai == null)
@@ -112,6 +113,11 @@
 
 
                                 <div class="quantity">
+                                    @if (ViewBag.ThongBao != null)
+                                    {
+                                        <div class="alert alert-danger" role="alert">@ViewBag.ThongBao</div>
+
+                                    }
                                     <label>Số Lượng</label>
                                     <div class="cart-plus-minus">
                                         <input class="cart-plus-minus-box" value="1" name="txtSoLuong" id="txtSoLuong" type="text">

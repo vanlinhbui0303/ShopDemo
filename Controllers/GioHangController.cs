@@ -65,6 +65,14 @@ namespace ShopDemo.Controllers
             List<GioHang> lstGioHang = LayGioHang();
             //kiểm tra mã hàng đã tồn tại trong giỏ hàng chưa   
             GioHang sanpham = lstGioHang.Find(n => n.sMaHH == mahh && n.iSize == int.Parse(f["txtSize"].ToString()));
+
+            //Kiểm tra số lượng trong kho
+            if (hh.SoLuong < int.Parse(f["txtSoLuong"].ToString()))
+            {
+                TempData["ThongBao"] = "Sản Phẩm không còn đủ số lượng để đặt hàng. Xin Lỗi vì sự bất tiện này";
+
+                return Redirect(strUrl);
+            }
             if (sanpham == null)
             {
                 sanpham = new GioHang(mahh);
@@ -76,9 +84,18 @@ namespace ShopDemo.Controllers
 
             }
             else
-            {            
-                sanpham.iSoLuong = sanpham.iSoLuong + int.Parse(f["txtSoLuong"].ToString());
-                return Redirect(strUrl);
+            {
+                if (sanpham.iSoLuong + int.Parse(f["txtSoLuong"].ToString()) > hh.SoLuong)
+                {
+                    TempData["ThongBao"] = "Sản Phẩm không còn đủ số lượng để đặt hàng. Xin Lỗi vì sự bất tiện này";
+
+                    return Redirect(strUrl);
+                }
+                else
+                {
+                    sanpham.iSoLuong = sanpham.iSoLuong + int.Parse(f["txtSoLuong"].ToString());
+                    return Redirect(strUrl);
+                }
             }
 
         }
@@ -107,6 +124,11 @@ namespace ShopDemo.Controllers
             //nếu tồn tại ... sửa số lượng
             if (sanpham != null)
             {
+                if (hh.SoLuong< int.Parse(f["txtSoLuong"].ToString()))
+                {
+                    TempData["ThongBao"] = "Sản Phẩm không còn đủ số lượng để đặt hàng. Xin Lỗi vì sự bất tiện này";
+                    return RedirectToAction("GioHang");
+                }
                 sanpham.iSoLuong = int.Parse(f["txtSoLuong"].ToString());
             }
             if (sanpham.iSoLuong == 0)
@@ -186,6 +208,10 @@ namespace ShopDemo.Controllers
                 return RedirectToAction("Index", "Home");
             }
             List<GioHang> lstGioHang = LayGioHang();
+            if (TempData["ThongBao"] != null)
+            {
+                ViewBag.ThongBao = TempData["ThongBao"].ToString();
+            }
 
             return View(lstGioHang);
         }
